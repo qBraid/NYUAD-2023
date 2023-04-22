@@ -60,6 +60,6 @@ The repository is structured as follows:
 - [**Install Qiskit in qBraid-Lab**](qbraid_qiskit_setup/accessing_ibm_hardware.ipynb)
 
 - [**Enable Qiskit QPU access through qBraid-CLI**](qbraid_qiskit_setup/accessing_ibm_hardware.ipynb)
-- [**Example environent setup on qBraid Youtube video**](https://www.youtube.com/watch?v=LyavbzSkvRo)
+- [**Example environent setup on qBraid Youtube video**](https://www.youtube.com/watch?v=LyavbzSkvRo) (Please use the code EHNU6626)
 
 ---
