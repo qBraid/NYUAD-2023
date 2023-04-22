@@ -31,7 +31,8 @@ problem of your choice._
 
 **Implementation requirements**:
 
-- Must utilize quantum hardware available through preferably IBM. However, we also have AWS devices available as well.
+- Must utilize quantum hardware available through preferably IBM. However, we
+  set also have AWS devices available as well.
 - You are also free to use any technology which allows you to solve the
   challenge.
 
@@ -43,25 +44,22 @@ problem of your choice._
 # qBraid Tutorials
 
 Here, we provide useful tutorials on how to use qBraid-Lab, along with tutorials
-on quantum computing, using IBM or Amazon Braket. The ladder were provided by the [qiskit-tutorials](https://github.com/qiskit/qiskit-tutorials) and the
+on quantum computing, using IBM or Amazon Braket. The ladder were provided by
+the [qiskit-tutorials](https://github.com/qiskit/qiskit-tutorials) and the
 [amazon-braket-examples](https://github.com/aws/amazon-braket-examples) github
 repositories repsectively.
 
 The repository is structured as follows:
 
 - [Setting up Qiskit environment](#qbraid)
-- [Getting Started: Simple circuits and algorithms](#simple)
-- [Advanced circuits and algorithms](#advanced)
-- [Hybrid quantum algorithms](#hybrid)
-
 
 ---
 
 ## <a name="qbraid">Setting up Qiskit environment in qBraid</a>
 
-- [**Install  Qiskit in qBraid-Lab**](qbraid_braket_setup/Install_Qiskit.ipynb)
+- [**Install Qiskit in qBraid-Lab**](qbraid_qiskit_setup/accessing_ibm_hardware.ipynb)
 
-- [**Enable Qiskit QPU access through qBraid-CLI**](qbraid_braket_setup/Enable_account.ipynb)
-- [**Example environent setup on qBraid Youtube video**](https://youtu.be/vXpS29HrdgY)
+- [**Enable Qiskit QPU access through qBraid-CLI**](qbraid_qiskit_setup/accessing_ibm_hardware.ipynb)
+- [**Example environent setup on qBraid Youtube video**](https://www.youtube.com/watch?v=LyavbzSkvRo)
 
 ---

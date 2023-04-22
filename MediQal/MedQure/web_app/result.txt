@@ -1,2 +1,0 @@
-1.png True
-2.png False

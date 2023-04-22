@@ -1,4 +1,0 @@
-amazon-braket-sdk
-dwave-ocean-sdk
-amazon-braket-ocean-plugin
-qubovert
