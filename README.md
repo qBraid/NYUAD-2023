@@ -51,7 +51,7 @@ repositories repsectively.
 
 The repository is structured as follows:
 
-- [Setting up Qiskit environment](#qbraid)
+- [Setting up Qiskit environment](qbraid_qiskit_setup/accessing_ibm_hardware.ipynb)
 
 ---
 
