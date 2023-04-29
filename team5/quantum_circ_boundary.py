@@ -13,6 +13,8 @@ from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import HGate, CZGate, RYGate
 
+from qiskit import Aer
+
 # Adding the transpiler to reduce the circuit to QASM instructions
 # supported by the backend
 from qiskit import transpile
@@ -23,7 +25,6 @@ from qiskit_aer import AerSimulator
 
 
 RUN_BACKEND = 0 # 0 = simulator
-
 
 
 # convert normalized vector to spherical variables
@@ -88,10 +89,10 @@ if __name__ == '__main__':
     qc = QuantumCircuit(qr)
 
 
-    thetas = angles(np.ones(n_q)/np.sqrt(n_q), V = False)
+    thetas = angles(np.ones(n_q)/np.sqrt(n_q), V = False)*2
     
     #prepares initial state: 1110 (corresponds to simple driangle)
-    qc.x(0)
+    #qc.x(0)
     #qc.x(1)
     #qc.x(2)
     
@@ -146,25 +147,26 @@ if __name__ == '__main__':
 
 
     
-    # Sample from the circuit
-    meas = QuantumCircuit(n_q, n_q)
-    meas.barrier(range(n_q))
-    # map the quantum measurement to the classical bits
-    meas.measure(range(n_q), range(n_q))
+    # # Sample from the circuit
+    # meas = QuantumCircuit(n_q, n_q)
+    # meas.barrier(range(n_q))
+    # # map the quantum measurement to the classical bits
+    # meas.measure(range(n_q), range(n_q))
     
-    # append the measurement to our circuit
-    qc = meas.compose(qc, range(n_q), front=True)
+    # # append the measurement to our circuit
+    # qc = meas.compose(qc, range(n_q), front=True)
     
     
         
-    # Draw the circuit
-    qc.draw(output='mpl')
+    # # Draw the circuit
+    # qc.draw(output='mpl')
     
     
     
     # Run the circuit
     if RUN_BACKEND == 0:
-        backend = AerSimulator()
+        #backend = AerSimulator()
+        backend = Aer.get_backend('unitary_simulator') #to get unitary matrix
         
         # First we have to transpile the quantum circuit
         # to the low-level QASM instructions used by the
@@ -180,12 +182,35 @@ if __name__ == '__main__':
         # Grab the results from the job.
         result_sim = job_sim.result()
         
-        counts = result_sim.get_counts(qc_compiled)
-        print(counts)
         
-        from qiskit.visualization import plot_histogram
-        plot_histogram(counts)
-        plt.show()
+        
+        print(np.real(result_sim.get_unitary(qc ,1).data))
+
+        
+        
+        #counts = result_sim.get_counts(qc_compiled)
+        #print(counts)
+        
+        #from qiskit.visualization import plot_histogram
+        #plot_histogram(counts)
+        #plt.show()
     
-    
-    
+    if RUN_BACKEND ==1: #run on real hardware
+        
+        from qiskit_ibm_runtime import QiskitRuntimeService
+        service = QiskitRuntimeService(channel="ibm_quantum")
+
+        options = {"backend_name": 'ibmq_jakarta', 
+           "max_execution_time":300,
+           "instance":'ibm-q-startup/qbraid/main'}
+
+        runtime_inputs = {
+            'circuits': qc, 
+            'shots': n_shots, 
+        }
+        
+        job = service.run(
+            program_id='circuit-runner',
+            options=options,
+            inputs=runtime_inputs,
+        )
