@@ -27,7 +27,7 @@ from qiskit_aer import AerSimulator
 
 
 
-RUN_BACKEND = 0 # 0 = simulator, 1 = Hardware, 2 = Unitary
+RUN_BACKEND = 1 # 0 = simulator, 1 = Hardware, 2 = Unitary
 
 
 # convert normalized vector to spherical variables
@@ -210,9 +210,11 @@ if __name__ == '__main__':
         from qiskit_ibm_runtime import QiskitRuntimeService
         service = QiskitRuntimeService(channel="ibm_quantum")
 
-        options = {"backend_name": 'ibmq_jakarta', 
-           "max_execution_time":300,
-           "instance":'ibm-q-startup/qbraid/main'}
+        options = {
+            "backend_name": 'ibmq_guadalupe', 
+            "max_execution_time":300,
+            "instance":'ibm-q-startup/qbraid/main'
+           }
 
         runtime_inputs = {
             'circuits': qc, 
