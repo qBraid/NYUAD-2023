@@ -9,12 +9,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #import qiskit functionality
-from qiskit.circuit.gate import Gate
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import HGate, CZGate, RYGate
 
+# Adding the transpiler to reduce the circuit to QASM instructions
+# supported by the backend
+from qiskit import transpile
 
+# Use AerSimulator
+from qiskit_aer import AerSimulator
+
+
+
+RUN_BACKEND = 0 # 0 = simulator
 
 
 
@@ -73,7 +81,7 @@ def angles(x, V = True):
 
 if __name__ == '__main__':
     n_q = 4
-    
+    n_shots = 10000
     
     # Create a quantum circuit with four qubits
     qr = QuantumRegister(n_q)
@@ -83,18 +91,20 @@ if __name__ == '__main__':
     thetas = angles(np.ones(n_q)/np.sqrt(n_q), V = False)
     
     #prepares initial state: 1110 (corresponds to simple driangle)
-    
+    qc.x(0)
+    #qc.x(1)
+    #qc.x(2)
     
     
     #builds the circuit, fig. 2 from https://arxiv.org/pdf/2202.00054.pdf
-    for j in range(2, n_q+1):
+    for ind, j in enumerate(range(2, n_q+1)):
         i = n_q-j
         qr_pair = [qr[i], qr[i+1]]
         
         #TODO - remove
         #qc = apply_RBS(qc, qr_pair, thetas[i])
     
-        param = thetas[i]
+        param = thetas[ind]
         
         qc.append(HGate(), [qr[i]])
         qc.append(HGate(), [qr[i+1]])
@@ -112,14 +122,14 @@ if __name__ == '__main__':
     
     qc.x(0)
 
-    for j in range(2, n_q+1):
+    for ind, j in enumerate(range(2, n_q+1)):
         i = j-2
         qr_pair = [qr[i], qr[i+1]]
         
         #TODO - remove
         #qc = apply_RBS(qc, qr_pair, thetas[i])
     
-        param = thetas[i]
+        param = thetas[-ind]
         
         qc.append(HGate(), [qr[i]])
         qc.append(HGate(), [qr[i+1]])
@@ -137,12 +147,45 @@ if __name__ == '__main__':
 
     
     # Sample from the circuit
-    qc.measure(range(n_q), range(n_q))
+    meas = QuantumCircuit(n_q, n_q)
+    meas.barrier(range(n_q))
+    # map the quantum measurement to the classical bits
+    meas.measure(range(n_q), range(n_q))
     
-    
+    # append the measurement to our circuit
+    qc = meas.compose(qc, range(n_q), front=True)
     
     
         
     # Draw the circuit
     qc.draw(output='mpl')
+    
+    
+    
+    # Run the circuit
+    if RUN_BACKEND == 0:
+        backend = AerSimulator()
+        
+        # First we have to transpile the quantum circuit
+        # to the low-level QASM instructions used by the
+        # backend
+        qc_compiled = transpile(qc, backend)
+    
+        
+        # Execute the circuit on the qasm simulator.
+        # We've set the number of repeats of the circuit
+        # to be 1024, which is the default.
+        job_sim = backend.run(qc_compiled, shots=n_shots)
+        
+        # Grab the results from the job.
+        result_sim = job_sim.result()
+        
+        counts = result_sim.get_counts(qc_compiled)
+        print(counts)
+        
+        from qiskit.visualization import plot_histogram
+        plot_histogram(counts)
+        plt.show()
+    
+    
     
