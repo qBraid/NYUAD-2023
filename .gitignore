@@ -133,3 +133,5 @@ dmypy.json
 .pyre/
 
 team5/quantum_circuit.ipynb
+
+team5/quantum circuit/quantum_circuit.ipynb
