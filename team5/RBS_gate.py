@@ -4,8 +4,7 @@ from qiskit.circuit.library.standard_gates import HGate, CZGate, RYGate
 class RBSGate(Gate):
 
     def __init__(self, label=None, param=None):
-        super().__init__(name='RBS', num_qubits=2, params=param, label=label)
-
+        super().__init__(name='RBS', num_qubits=2, params=[param]
     def _define(self):
         from qiskit.circuit.quantumregister import QuantumRegister
         from qiskit.circuit.quantumcircuit import QuantumCircuit
