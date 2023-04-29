@@ -1,28 +1,28 @@
 from qiskit.circuit.gate import Gate
-from qiskit.circuit.quantumregister import QuantumRegister
-from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import HGate, CZGate, RYGate
 
-param = 0.5
+class RBSGate(Gate):
 
-# Create a quantum circuit with two qubits
-qr = QuantumRegister(2)
-qc = QuantumCircuit(qr)
+    def __init__(self, label=None, param=None):
+        super().__init__(name='RBS', num_qubits=2, params=[param])
+        
+    def _define(self):
+        from qiskit.circuit.quantumregister import QuantumRegister
+        from qiskit.circuit.quantumcircuit import QuantumCircuit
 
-# Apply hadamard on both qubits
-qc.append(HGate(), [qr[0]])
-qc.append(HGate(), [qr[1]])
-# Apply a two qubit CZ gate
-qc.append(CZGate(), [qr[0], qr[1]])
-# Apply RY of pi.2 on both qubits
-qc.append(RYGate(param/2), [qr[0]])
-qc.append(RYGate(-param/2), [qr[1]])
-# Apply a two qubit CZ gate
-qc.append(CZGate(), [qr[0], qr[1]])
-# Apply Hadamard on both qubits
-qc.append(HGate(), [qr[0]])
-qc.append(HGate(), [qr[1]])
+        q = QuantumRegister(2, 'q')
+        qc = QuantumCircuit(q, name=self.name)
 
-# Draw the circuit
-qc.draw(output='mpl')
+        rules = [
+            (HGate(), [q[0]], []),
+            (HGate(), [q[1]], []),
+            (CZGate(), [q[0], q[1]], []),
+            (RYGate(self.params[0]), [q[0]], []),
+            (RYGate(-self.params[0]), [q[1]], []),
+            (CZGate(), [q[0], q[1]], []),
+            (HGate(), [q[0]], []),
+            (HGate(), [q[1]], [])
+        ]
 
+        qc._data = rules
+        self.definition = qc
