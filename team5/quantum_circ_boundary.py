@@ -13,6 +13,9 @@ from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import HGate, CZGate, RYGate
 
+from RBS_gate import RBSGate
+
+
 from qiskit import Aer
 
 # Adding the transpiler to reduce the circuit to QASM instructions
@@ -68,13 +71,13 @@ if __name__ == '__main__':
     qc = QuantumCircuit(qr)
 
 
-    thetas = angles(np.ones(n_q)/np.sqrt(n_q), V = False)[::-1]*2 #factor of two to offset the multiplication by 1/2 in our convention of the RBS gate
+    thetas = angles(np.ones(n_q)/np.sqrt(n_q), V = False)
     #thetas = np.ones(n_q)*np.pi/4 * 2
     
     #prepares initial state: 1110 (corresponds to simple driangle)
     qc.x(0)
-    #qc.x(1)
-    #qc.x(2)
+    qc.x(1)
+    qc.x(2)
     
     qc.barrier(range(n_q))
 
@@ -84,10 +87,15 @@ if __name__ == '__main__':
         i = n_q-j
         qr_pair = [qr[i], qr[i+1]]
         
-        #TODO - remove
-        #qc = apply_RBS(qc, qr_pair, thetas[i])
+
     
-        param = thetas[ind]
+        param = thetas[::-1][ind]
+        
+        
+        # TODO: Implement this such that transpilation works...
+        #qc.append(RBSGate(param=param), [qr[i], qr[i+1]])
+
+
         
         
         # Apply RBS gate:
@@ -96,15 +104,16 @@ if __name__ == '__main__':
         # Apply a two qubit CZ gate
         qc.append(CZGate(), [qr[i], qr[i+1]])
         # Apply RY of pi.2 on both qubits
-        qc.append(RYGate(param/2), [qr[i]])
-        qc.append(RYGate(-param/2), [qr[i+1]])
+        qc.append(RYGate(-param), [qr[i]]) # note sign convention
+        qc.append(RYGate(param), [qr[i+1]])
         # Apply a two qubit CZ gate
         qc.append(CZGate(), [qr[i], qr[i+1]])
         # Apply Hadamard on both qubits
         qc.append(HGate(), [qr[i]])
         qc.append(HGate(), [qr[i+1]])
         
-    
+
+        
     qc.x(0)
 
     for ind, j in enumerate(range(2, n_q+1)):
@@ -115,15 +124,17 @@ if __name__ == '__main__':
         #TODO - remove
         #qc = apply_RBS(qc, qr_pair, thetas[i])
     
-        param = thetas[::-1][ind]
+        param = -thetas[ind]
+        
+
         
         qc.append(HGate(), [qr[i]])
         qc.append(HGate(), [qr[i+1]])
         # Apply a two qubit CZ gate
         qc.append(CZGate(), [qr[i], qr[i+1]])
         # Apply RY of pi.2 on both qubits
-        qc.append(RYGate(param/2), [qr[i]])
-        qc.append(RYGate(-param/2), [qr[i+1]])
+        qc.append(RYGate(-param), [qr[i]]) 
+        qc.append(RYGate(param), [qr[i+1]])
         # Apply a two qubit CZ gate
         qc.append(CZGate(), [qr[i], qr[i+1]])
         # Apply Hadamard on both qubits
@@ -175,9 +186,9 @@ if __name__ == '__main__':
         counts = result_sim.get_counts(qc_compiled)
         print(counts)
         
-        from qiskit.visualization import plot_histogram
-        plot_histogram(counts)
-        plt.show()
+        #from qiskit.visualization import plot_histogram
+        #plot_histogram(counts)
+
     
     if RUN_BACKEND ==1: #run on real hardware
         # Sample from the circuit
@@ -213,6 +224,9 @@ if __name__ == '__main__':
             options=options,
             inputs=runtime_inputs,
         )
+        
+        
+        
         
     if RUN_BACKEND == 2:
         backend = Aer.get_backend('unitary_simulator')
