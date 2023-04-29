@@ -26,6 +26,3 @@ class RBSGate(Gate):
 
         qc._data = rules
         self.definition = qc
-    
-def RBS(self, param, qubit1, qubit2):
-    return self.append(RBSGate(param), [qubit1, qubit2], [])
