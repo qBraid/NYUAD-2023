@@ -17,8 +17,8 @@ class RBSGate(Gate):
             (HGate(), [q[0]], []),
             (HGate(), [q[1]], []),
             (CZGate(), [q[0], q[1]], []),
-            (RYGate(self.params[0]), [q[0]], []),
-            (RYGate(-self.params[0]), [q[1]], []),
+            (RYGate(self.params[0]/2), [q[0]], []),
+            (RYGate(-self.params[0]/2), [q[1]], []),
             (CZGate(), [q[0], q[1]], []),
             (HGate(), [q[0]], []),
             (HGate(), [q[1]], [])
