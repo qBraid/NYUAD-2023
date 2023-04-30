@@ -1,4 +1,10 @@
 # Smart Current: Blackouts are not just an inconvenience
+
+<p align="center">
+  <img src="logo.jpg"
+  width=40%/>
+</p>
+
 https://smartcurrents.webflow.io/
 
 
