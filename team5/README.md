@@ -1,5 +1,5 @@
 <h1 id="sample-markdown" text-align: center>
-  Sample Markdown
+  Smart Current: Blackouts are not just an inconvenience
 </h1>
 <p align="center">
   <img src="images/logo.jpg"
