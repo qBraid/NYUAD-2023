@@ -7,10 +7,10 @@ import numpy as np
 
 # Import parameters dataset to numpy array
 # params = np.loadtxt('params.csv', delimiter=',')
-params = np.zeros(28)
+params = np.random.rand(28)
 
 # Set the simulator
-dev = qml.device("qiskit.aer", wires=2, shots=1000)
+dev = qml.device("qiskit.aer", wires=8, shots=1000)
 
 # Define the RBS gate function
 class RBS(Operation):
@@ -141,7 +141,6 @@ def circuit(params):
     RBS(params[25], wires=[0, 1])
 
     return qml.probs(wires=[0, 1, 2, 3, 4, 5, 6, 7])
-
 
 #Draw the circuit
 print(qml.draw(circuit)(params))
