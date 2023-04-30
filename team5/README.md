@@ -1,4 +1,6 @@
-# Smart Current: Blackouts are not just an inconvenience
+<p align = "center">
+  # Smart Current: Blackouts are not just an inconvenience
+</p>
 <p align="center">
   <img src="images/logo.jpg"
   width=30%/>
