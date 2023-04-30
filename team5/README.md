@@ -3,7 +3,9 @@
   <img src="images/logo.jpg"
   width=40%/>
 </p>
-https://smartcurrents.webflow.io/
+<p align="center">
+  https://smartcurrents.webflow.io/
+</p>
 
 
 ## Project Description
