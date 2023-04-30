@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800&display=swap');
+
+:root {
+  --bgColor: #ffffff;
+  --textColor: #000000;
+  --hoverTextColor: #000000bb;
+}
+
+.aboutContainer {
+  height: 100vh;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Exo 2', sans-serif;
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+.aboutTitle {
+  font-size: 34px;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.aboutHeroContainer {
+  height: 100vh;
+  scroll-snap-align: center;
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.aboutLeft {
+  flex: 1;
+  
+  border-radius: 20px;
+  backdrop-filter: blur(25px);
+  box-shadow: -15px 17px 17px rgba(10, 10, 10. 0.25);
+
+  height: 80%;
+  width: 80%;
+  inset: 0;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.aboutRight {
+  flex: 1;
+  position: relative;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 800px) {
+  .aboutLeft {
+    max-width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 700px){
+  /* .aboutLeft {
+    display: block;
+  } */
+
+  .aboutDescription {
+    padding-bottom: 40px;
+  }
+
+  .aboutTitle {
+    margin-top: 80px;
+    font-size: 32px;
+  }
+}
+

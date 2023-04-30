@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+:root {
+  --bgColor: #ffffff;
+  --textColor: #000000;
+  --hoverTextColor: #000000bb;
+  --bgImage: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+}
+
+* {
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bgColor);
+  /* background-image: var(--bgImage); */
+  color: var(--textColor);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  
+  /* Added by dev-ag */
+  font-family: 'Lato', sans-serif;
+  background-color: var(--bgColor);
+  /* background-image: var(--bgImage); */
+  color: var(--textColor);
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

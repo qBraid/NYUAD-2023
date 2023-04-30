@@ -1,0 +1,1 @@
+![QCrop Napkin Pitch Poster](src\assets\images\QropNapkin.png)
