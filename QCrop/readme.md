@@ -3,14 +3,20 @@
 
 ## Team Mentors
 Pawel Gora
+
 Amir Karamlou
 
 ## Team Members
 Padmapriya Mohan
+
 Meriam Mkadmi
+
 Ashmit JaiSarita Gupta
+
 Ahmed Jaafri
+
 Rohan Mitra
+
 Walid Al-Eisawi
 
 ## Idea Details
