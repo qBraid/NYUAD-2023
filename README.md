@@ -14,4 +14,14 @@ problem of your choice._
 - Variational Quantum Eigensolver (VQE)
 - Quantum Approximate Optimization Algorithm (QAOA)
 
+### Qubo Fault Detection
+The program is used for fault detection and diagnosis of graph based networks. The implementation is based on qubo explained in [paper](https://arxiv.org/pdf/1406.7601.pdf).
+
+**Requirements:**
+- Install pyqubo using: pip install pyqubo
+
+**Input to the program:**
+- Sensor readings
+- Paths from source to sensor
+
 ---
