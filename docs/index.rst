@@ -10,6 +10,9 @@ Welcome to QatraH's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   _includes/qml_debugging
+   
+
 
 
 Indices and tables
