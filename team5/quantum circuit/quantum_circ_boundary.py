@@ -27,7 +27,7 @@ from qiskit_aer import AerSimulator
 
 
 
-RUN_BACKEND = 3 # 0 = simulator, 1 = Hardware, 2 = Unitary, 3 = Noisy simulator
+RUN_BACKEND = 0 # 0 = simulator, 1 = Hardware, 2 = Unitary, 3 = Noisy simulator
 
 
 # convert normalized vector to spherical variables
