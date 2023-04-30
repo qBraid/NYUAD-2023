@@ -1,10 +1,10 @@
 # Smart Current: Blackouts are not just an inconvenience
 <p align="center">
   <img src="images/logo.jpg"
-  width=40%/>
+  width=30%/>
 </p>
 <p align="center">
-  https://smartcurrent.org
+  smartcurrent.org
 </p>
 
 
