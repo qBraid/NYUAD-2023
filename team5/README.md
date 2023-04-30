@@ -10,12 +10,6 @@ https://smartcurrents.webflow.io/
 
 In this project, we leverage quantum computing to solve the problem of power outages. Quantum-enhanced GNNs and quantum extracted topological features are used to regulate power flows and prevent blackouts.
 
-## The Team
-<p align="center">
-  <img src="images/team.jpg"
-  width=50%/>
-</p>
-
 
 ## Our Approach
 
@@ -25,3 +19,9 @@ The classical algorithm works by finding the topological values associated with 
 
 The classical algorithm runs in super-polynomial time, meaning it is very slow for large power grids. We want the power grid analysis to run in real-time, and every check of the power-grid requires a topological analysis, so we need an improvement to our topological analysis. In other words, we need to speed-up our analysis and remain accurate. 
 
+
+## The Team
+<p align="center">
+  <img src="images/team.jpg"
+  width=50%/>
+</p>
