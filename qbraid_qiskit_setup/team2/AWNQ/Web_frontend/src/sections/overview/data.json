@@ -1,0 +1,74 @@
+[
+  {
+    "category": "anti-social-behaviour",
+    "location_type": "Force",
+    "location": {
+      "latitude": "24.466667",
+      "street": {
+        "id": 884343,
+        "name": "On or near Wharf Street North"
+      },
+      "longitude": "54.366669"
+    },
+    "context": "",
+    "outcome_status": null,
+    "persistent_id": "",
+    "id": 54164419,
+    "location_subtype": "",
+    "month": "2017-01"
+  },
+  {
+    "category": "anti-social-behaviour",
+    "location_type": "Force",
+    "location": {
+      "latitude": "24.458729",
+      "street": {
+        "id": 883425,
+        "name": "On or near Peacock Lane"
+      },
+      "longitude": "54.440517"
+    },
+    "context": "",
+    "outcome_status": null,
+    "persistent_id": "",
+    "id": 54165316,
+    "location_subtype": "",
+    "month": "2017-01"
+  },
+  {
+    "category": "anti-social-behaviour",
+    "location_type": "Force",
+    "location": {
+      "latitude": "24.434976",
+      "street": {
+        "id": 883425,
+        "name": "On or near Peacock Lane"
+      },
+      "longitude": "54.418545"
+    },
+    "context": "",
+    "outcome_status": null,
+    "persistent_id": "",
+    "id": 54165316,
+    "location_subtype": "",
+    "month": "2017-01"
+  },
+  {
+    "category": "anti-social-behaviour",
+    "location_type": "Force",
+    "location": {
+      "latitude": "24.493726",
+      "street": {
+        "id": 883425,
+        "name": "On or near Peacock Lane"
+      },
+      "longitude": "54.377346"
+    },
+    "context": "",
+    "outcome_status": null,
+    "persistent_id": "",
+    "id": 54165316,
+    "location_subtype": "",
+    "month": "2017-01"
+  }
+]
