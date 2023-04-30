@@ -1,3 +1,5 @@
+### Create custom gate for Reconfigurable Beamsplitter (RBS) ###
+
 from qiskit.circuit.gate import Gate
 from qiskit.circuit.library.standard_gates import HGate, CZGate, RYGate
 
