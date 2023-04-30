@@ -23,7 +23,6 @@ The classical algorithm works by finding the topological values associated with 
 
 The classical algorithm runs in super-polynomial time, meaning it is very slow for large power grids. For the power grid analysis to be run in real-time, every check of the power-grid requires a topological analysis, so an improvement to the topological analysis is desired. In other words, we need to speed-up our analysis and remain accurate. 
 
-
 ## The Team
 <p align="center">
   <img src="images/team.jpg"
