@@ -140,7 +140,7 @@ def circuit(params):
     # theta28
     RBS(params[25], wires=[0, 1])
 
-    return qml.expval(qml.PauliZ(0) @ qml.PauliZ(1))
+    return qml.probs(wires=[0, 1, 2, 3, 4, 5, 6, 7])
 
 
 #Draw the circuit
