@@ -10,6 +10,6 @@ In this project, we leverage quantum computing to solve the problem of power out
 
 
 ## Quantum circuits
-quantum_circ_boundary_operator.py
+quantum_circ_boundary_operator.py \
 quantum_circ_orthogonal_graph.py
 
