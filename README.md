@@ -15,8 +15,9 @@ problem of your choice._
 - Quantum Approximate Optimization Algorithm (QAOA)
 
 ---
-## Replacing Classical Pressure Sensors with Optimized Quantum SensorQuantum sensors are not invasive.
-Quantom sensors are more erorr tolerant and to the changes in the environment around it. They are more accurate which improve the ability to detect leakage. 
+## Replacing Classical Pressure Sensors with Optimized Quantum Sensors
+
+Compared to classical pressure sensors, quantum sensors are not invasive. They are also tolerant to the changes in the environment around it while also being more accurate. This improves the ability to detect pipe leakage.
 
 ## Leak Detection and Localization
 
