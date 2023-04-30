@@ -1,0 +1,60 @@
+:root {
+    --card-height: 30px;
+    --card-width: 50px;
+    --bgColor: #ffffff;
+    --textColor: #000000;
+    --hoverTextColor: #6b6b6b;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: hidden;
+    margin: 10px;
+    padding: 10vh;
+    padding-bottom: 50px;
+    /* min-height: 400px;
+    max-height: 400px; */
+    background-color: transparent;
+}
+
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    margin: 10px 40px;
+    flex-direction: column;
+    transition: font-size ease-in-out .1s;
+    transform: translateZ(0);
+    will-change: transform;
+    color: var(--textColor);
+}
+
+.card:hover {
+    color: var(--hoverTextColor);
+    font-size: 2rem;
+}
+
+.innerCarousel {
+    display: flex;
+    height: 100%;
+}
+
+.activeMoleculeCard {
+    color: var(--textColor);
+    font-size: 2rem;
+}
+
+.cardContent:hover {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+     :root {
+        --card-height: 250px;
+        --card-width: calc(var(--card-height) / 1.5);
+    }
+}
