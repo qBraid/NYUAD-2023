@@ -1,6 +1,6 @@
-<p align = "center">
-  # Smart Current: Blackouts are not just an inconvenience
-</p>
+<h1 id="sample-markdown" text-align: center>
+  Sample Markdown
+</h1>
 <p align="center">
   <img src="images/logo.jpg"
   width=30%/>
