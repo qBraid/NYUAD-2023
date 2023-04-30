@@ -1,7 +1,6 @@
 from pyqubo import Binary
 import neal
-import igraph
-from igraph import Graph, EdgeSeq
+
 
 
 
@@ -23,7 +22,7 @@ def read_input():
 def create_optimization_function(sensor_readings, paths, number_of_nodes):
     H = 0
     number_of_sensors = len(sensor_readings) - 1
-    lambdaPath = 3
+    lambdaPath = 1
     # Add H consistent
     for y in range(1, number_of_sensors+1):
         l = sensor_readings[y]
@@ -49,6 +48,36 @@ def create_optimization_function(sensor_readings, paths, number_of_nodes):
 
     return H
 
+
+def print_variables(best_sample):
+    Nodes = {}
+    Sensors = {}
+    for key in best_sample:
+        if "*" in key:
+            if best_sample[key] == 0:
+                pass
+            key1, key2 = [x for x in key.split(" * ")]
+            if "x" in key1:
+                Nodes[key1] = best_sample[key]
+            else:
+                Sensors[key1] = best_sample[key]
+            if "x" in key2:
+                Nodes[key2] = best_sample[key]
+            else:
+                Sensors[key2] = best_sample[key]
+        else:
+            if "x" in key:
+                Nodes[key] = best_sample[key]
+            else:
+                Sensors[key] = best_sample[key]
+    
+    print("Node Values:")
+    for key in Nodes:
+        print(key, ": ", Nodes[key])
+    
+    print("Sensor Values:")
+    for key in Sensors:
+        print(key, ": ", Sensors[key])
 
 
 if __name__ == '__main__':
