@@ -12,7 +12,7 @@
 
 ## Project Description
 
-In this project, we leverage quantum computing to solve the problem of power outages. Quantum-enhanced GNNs and quantum extracted topological features are used to regulate power flows and prevent blackouts.
+Smart Current leverages quantum computing to minimise the problem of power outages. Quantum-enhanced GNNs and quantum extracted topological features are used to regulate power flows and prevent blackouts.
 
 
 ## Our Approach
