@@ -4,7 +4,7 @@
   width=40%/>
 </p>
 <p align="center">
-  https://smartcurrents.webflow.io/
+  https://smartcurrent.org
 </p>
 
 
