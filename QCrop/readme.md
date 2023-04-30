@@ -1,4 +1,1 @@
-# Team 10: QCrop
-
-## Napkin Pitch
-![Qrop Napkin Pitch](./assets/QropNapkin.png)
+![QCrop Napkin Pitch Poster](src\assets\images\QropNapkin.png)
