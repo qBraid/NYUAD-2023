@@ -10,32 +10,18 @@ import numpy as np
 params = np.random.rand(28)
 
 # Set the simulator
-dev = qml.device("qiskit.aer", wires=8, shots=1000)
+dev = qml.device("qiskit.aer", wires=8, shots=10000)
 
 # Define the RBS gate function
-class RBS(Operation):
-    num_params = 1
-    num_wires = 2
-    par_domain = 'R'
-
-    @staticmethod
-    def decomposition(theta, wires):
-        decomp = []
-
-        decomp.append(
-            qml.Hadamard(wires=wires[0]),
-            qml.Hadamard(wires=wires[1]),
-            qml.CZ(wires=wires),
-            qml.RY(theta, wires=wires[0]),
-            qml.RY(-theta, wires=wires[1]),
-            qml.CZ(wires=wires),
-            qml.Hadamard(wires=wires[0]),
-            qml.Hadamard(wires=wires[1]),
-        )
-
-        return decomp
-
-
+def RBS(theta, wires):
+    qml.Hadamard(wires=wires[0]),
+    qml.Hadamard(wires=wires[1]),
+    qml.CZ(wires=wires),
+    qml.RY(theta, wires=wires[0]),
+    qml.RY(-theta, wires=wires[1]),
+    qml.CZ(wires=wires),
+    qml.Hadamard(wires=wires[0]),
+    qml.Hadamard(wires=wires[1]),
 
 # Define the quantum circuit
 @qml.qnode(dev)
@@ -144,3 +130,6 @@ def circuit(params):
 
 #Draw the circuit
 print(qml.draw(circuit)(params))
+
+# Print the probability distribution
+print(circuit(params))
