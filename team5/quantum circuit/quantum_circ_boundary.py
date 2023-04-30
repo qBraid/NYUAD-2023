@@ -13,7 +13,7 @@ from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.library.standard_gates import HGate, CZGate, RYGate
 
-from RBS_gate import RBSGate
+#from RBS_gate import RBSGate
 
 
 from qiskit import Aer
@@ -24,7 +24,6 @@ from qiskit import transpile
 
 # Use AerSimulator
 from qiskit_aer import AerSimulator
-from qiskit.providers.ibmq import IBMQ
 
 
 
@@ -247,6 +246,9 @@ if __name__ == '__main__':
         print(np.real(result.get_unitary(qc ,3).data))
 
     elif RUN_BACKEND == 3: # noisy simulator
+        from qiskit_ibm_provider import IBMProvider
+
+        
         # Sample from the circuit
         meas = QuantumCircuit(n_q, n_q)
         meas.barrier(range(n_q))
@@ -256,13 +258,10 @@ if __name__ == '__main__':
         # append the measurement to our circuit
         qc = meas.compose(qc, range(n_q), front=True)
         
-        
-            
-        # Draw the circuit
-        qc.draw(output='mpl')
+
         
         # get a real backend from a real provider
-        provider = IBMQ.load_account()
+        provider = IBMProvider(instance='ibm-q-startup/qbraid/reservations')
         backend = provider.get_backend('ibmq_guadalupe')
         
         # generate a simulator that mimics the real quantum system with the latest calibration results
