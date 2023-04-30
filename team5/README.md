@@ -6,7 +6,7 @@
   width=30%/>
 </p>
 <p align="center">
-  smartcurrent.org
+  http://smartcurrent.org
 </p>
 
 
