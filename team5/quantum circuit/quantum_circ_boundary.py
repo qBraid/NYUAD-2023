@@ -24,10 +24,11 @@ from qiskit import transpile
 
 # Use AerSimulator
 from qiskit_aer import AerSimulator
+from qiskit.providers.ibmq import IBMQ
 
 
 
-RUN_BACKEND = 1 # 0 = simulator, 1 = Hardware, 2 = Unitary
+RUN_BACKEND = 3 # 0 = simulator, 1 = Hardware, 2 = Unitary, 3 = Noisy simulator
 
 
 # convert normalized vector to spherical variables
@@ -190,7 +191,7 @@ if __name__ == '__main__':
         #plot_histogram(counts)
 
     
-    if RUN_BACKEND ==1: #run on real hardware
+    elif RUN_BACKEND ==1: #run on real hardware
         # Sample from the circuit
         meas = QuantumCircuit(n_q, n_q)
         meas.barrier(range(n_q))
@@ -213,7 +214,7 @@ if __name__ == '__main__':
         options = {
             "backend_name": 'ibmq_guadalupe', 
             "max_execution_time":300,
-            "instance":'ibm-q-startup/qbraid/main'
+            "instance":'ibm-q-startup/qbraid/reservations'
            }
 
         runtime_inputs = {
@@ -227,10 +228,7 @@ if __name__ == '__main__':
             inputs=runtime_inputs,
         )
         
-        
-        
-        
-    if RUN_BACKEND == 2:
+    elif RUN_BACKEND == 2:
         backend = Aer.get_backend('unitary_simulator')
         
                
@@ -248,7 +246,48 @@ if __name__ == '__main__':
         result = job_sim.result()
         print(np.real(result.get_unitary(qc ,3).data))
 
+    elif RUN_BACKEND == 3: # noisy simulator
+        # Sample from the circuit
+        meas = QuantumCircuit(n_q, n_q)
+        meas.barrier(range(n_q))
+        # map the quantum measurement to the classical bits
+        meas.measure(range(n_q), range(n_q))
         
+        # append the measurement to our circuit
+        qc = meas.compose(qc, range(n_q), front=True)
+        
+        
+            
+        # Draw the circuit
+        qc.draw(output='mpl')
+        
+        # get a real backend from a real provider
+        provider = IBMQ.load_account()
+        backend = provider.get_backend('ibmq_guadalupe')
+        
+        # generate a simulator that mimics the real quantum system with the latest calibration results
+        backend = AerSimulator.from_backend(backend)
+       
+        # First we have to transpile the quantum circuit
+        # to the low-level QASM instructions used by the
+        # backend
+        qc_compiled = transpile(qc, backend)
+    
+        
+        # Execute the circuit on the qasm simulator.
+        # We've set the number of repeats of the circuit
+        # to be 1024, which is the default.
+        job_sim = backend.run(qc_compiled, shots=n_shots)
+        
+        # Grab the results from the job.
+        result_sim = job_sim.result()
+        
+        counts = result_sim.get_counts(qc_compiled)
+        print(counts)
+        
+        
+    else:
+        raise NotImplementedError
         
         
         
