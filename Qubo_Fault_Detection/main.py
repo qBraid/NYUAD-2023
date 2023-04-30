@@ -79,13 +79,6 @@ def create_optimization_function(sensor_readings, paths, number_of_nodes):
                     if x<j:
                         H+= (2*lambdaPath*Binary('y'+str(y))*Binary('x'+str(x))*Binary('x'+str(j)))
 
-    # for y in range(1, number_of_sensors+1):
-    #     mult = 1
-    #     l = sensor_readings[y]
-    #     for x in paths[y]:
-    #         mult *= Binary('x'+str(x))
-    #     H+= (Binary('y'+str(y)) * l + Binary('y'+str(y)) * mult - 2 * Binary('y'+str(y)) * l * mult) * lambdaPath
-
     # Add H numFaults
     for y in range(1, number_of_sensors+1):
         H+= (1-Binary('y'+str(y)))
