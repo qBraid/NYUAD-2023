@@ -15,3 +15,7 @@ problem of your choice._
 - Quantum Approximate Optimization Algorithm (QAOA)
 
 ---
+<p align="center">
+  <img width="460" height="460" src="https://github.com/qcswat/qatrah/blob/main/WDN%20animation.gif">
+</p>
+
