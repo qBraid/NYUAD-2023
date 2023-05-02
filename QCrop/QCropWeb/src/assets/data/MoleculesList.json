@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Hydrogen",
+    "formula": "H2",
+    "threeDPath": "https://embed.molview.org/v1/?mode=balls&cid=783",
+    "isAvailable": "yes"
+  },
+  {
+    "name": "Beryllium hydride",
+    "formula": "BeH2",
+    "threeDPath": "https://embed.molview.org/v1/?mode=balls&cid=139073",
+    "isAvailable": "no"
+  },
+  {
+    "name": "Lithium hydride",
+    "formula": "LiH",
+    "threeDPath": "https://embed.molview.org/v1/?mode=balls&cid=62714",
+    "isAvailable": "no"
+  }
+]

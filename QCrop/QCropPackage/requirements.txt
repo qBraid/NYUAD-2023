@@ -1,0 +1,7 @@
+qiskit-nature==0.4
+qutip
+qiskit-aer
+pyscf --prefer-binary
+numpy
+matplotlib
+tqdm
