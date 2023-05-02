@@ -132,3 +132,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+team5/quantum_circuit.ipynb
+
+team5/quantum circuit/quantum_circuit_test.ipynb
+team5/quantum circuit/orthogonal_graph_pl.py
